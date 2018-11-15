@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Deployment"
+AuthUserFile /home/website/public_html/deploy/.htpasswd
+Require valid-user

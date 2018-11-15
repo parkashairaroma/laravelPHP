@@ -1,0 +1,50 @@
+/* Home */
+.hero-home .hero-image {
+	background-image: url(../images/hero/hero-home-olfactory.jpg);
+}
+/* Industry: Banks */
+.hero-industry-banks .hero-image {
+	background-image: url(../images/hero/hero-industry-banks.jpg);
+}
+/* Client: BCBG */
+.hero-client-bcbg .hero-image {
+	background-image: url(../images/hero/hero-client-bcbg.jpg);
+}
+/* Products: Home */
+.hero-products:before {
+	padding-bottom: 80%;
+}
+.hero-products {
+	min-height: 480px;
+	max-height: 880px;
+}
+.hero-products .hero-image {
+	background-image: url(../images/hero/hero-products.jpg);
+	background-position: right top;
+}
+/* Products: Aromax */
+.hero-product-aromax:before {
+	padding-bottom: 80%;
+}
+.hero-product-aromax {
+	min-height: 480px;
+	max-height: 880px;
+}
+.hero-product-aromax .hero-image {
+	background-image: url(../images/hero/hero-product-aromax.jpg);
+	background-size: contain;
+	background-position: center bottom;
+}
+/* Products: Aropromo */
+.hero-product-aropromo:before {
+	padding-bottom: 80%;
+}
+.hero-product-aropromo {
+	min-height: 480px;
+	max-height: 880px;
+}
+.hero-product-aropromo .hero-image {
+	background-image: url(../images/hero/hero-product-aropromo.jpg);
+	background-size: contain;
+	background-position: center bottom;
+}

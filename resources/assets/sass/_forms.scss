@@ -1,0 +1,241 @@
+/*
+==========================================================================================
+Air Aroma Form Stylesheet
+==========================================================================================
+*/
+
+/* Colors */
+
+$border-default: #e1e1e1;
+$border-hover: #c2c2c2;
+$border-active: #c2c2c2;
+$border-focus: #c2c2c2;
+$text-error: #cc0000;
+$text-success: #339900;
+$bg-default: #fff;
+$bg-active: #ddd;
+$bg-hover: #f2f2f2;
+$bg-focus: #09f;
+$bg-error: #fcf2f2;
+
+.form-group,
+.form-action {
+	max-width: 720px;
+}
+.form-group {
+	margin: 1.5em auto;
+	text-align: left;
+}
+.form-action {
+	margin: 2em auto;
+	&.fa-a {
+		text-align: center;
+	}
+	.note {
+		margin: 1.5em auto;
+		max-width: 480px;
+		width: 80%;
+	}
+	a {
+		text-decoration: none;
+	}
+}
+label {
+	display: block;
+	margin-bottom: 0.5em;
+}
+input, textarea, select {
+	font-size: 100%;
+	font-family: $font-body;
+    font-weight: $font-light;
+    line-height: 1.5;
+}
+.button-group {
+	@include flexbox;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-ms-flex-pack: center;
+	-ms-flex-align: center;
+	-ms-align-items: center;
+	-ms-justify-content: center;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	align-items: center;
+	justify-content: center;
+	
+	.ui-button {
+		margin: 0.5em $space-unit;
+		min-width: 204px;
+		width: 40%;
+		@include layout-lg {
+			margin: 0.5em ($space-unit*2);
+			max-width: 260px;
+		}
+	}
+}
+
+input.ui-text,
+textarea.ui-text {
+	border: 1px solid $border-default;
+	border-radius: 4px;
+	padding: 0.5em;
+	width: 100%;
+	-webkit-appearance: none;
+	@include layout-md {
+		padding: 0.5em 0.75em;
+	}
+	&:hover {
+		border-color: $border-hover;
+	}
+	&:focus {
+		border-color: $border-focus;
+		outline: 0;
+	}
+}
+textarea {
+	resize: vertical;
+}
+
+/* Select dropdowns */
+select {
+	width: 100%;
+}
+
+/* Option list */
+.option-list {
+	margin: 1.5em 0 1em 0;
+	padding: 0;
+	li {
+		list-style: none;
+		margin: 0 0 0.5em 0;
+		padding: 0;
+	}
+	.ui-radio,
+	.ui-checkbox {
+		float: left;
+		margin: 0.35em 0.15em;
+	}
+	label {
+		margin: 0 0 0 ($space-unit*4);
+	}
+}
+/* Edit labels */
+.edit-button {
+	color: $text-link;
+	font-size: 0.875rem; // Use rem units for consistent sizing
+	margin: 0 $space-unit;
+}
+/* Semantic UI dropdown styling */
+.ui.selection.dropdown {
+	border: 1px solid $border-default;
+	border-radius: 4px;
+	color: $text-body;
+	padding: 0.5em 0.75em !important;
+	line-height: 1.5;
+	min-height: initial;
+	&.active, &.active:hover, &:hover {
+		border-color: $border-hover;
+		font-weight: inherit;
+		.menu {
+			border-color: $border-hover;
+		}
+	}
+	&.active, &.active:focus, &:focus {
+		border-color: $border-active;
+		.text {
+			font-weight: $font-light;
+		}
+		.menu {
+			border-color: $border-active;
+			width: 100%;
+		}
+	}
+	&.search>input.search {
+		line-height: 1.5;
+		padding: 0.5em;
+		@include layout-md {
+			padding: 0.5em 0.75em !important;
+		}
+	}
+	&>.default.text {
+		color: $text-body;
+	}
+	&.visible>.text:not(.default) {
+		font-weight: $font-light;
+		color: $text-body;
+	}
+	&.selected,
+	.menu .item,
+	.menu .selected.item {
+		color: $text-body;
+		font-weight: $font-light;	
+	}
+	.menu .item {
+		border: none;
+		font-size: 1em;
+		padding: 0.5em;
+		@include layout-md {
+			padding: 0.5em 0.75em !important;
+		}
+
+		&.active {
+			background-color: $bg-active;
+		}
+		&:hover {
+			background-color: $bg-hover;
+		}
+	}
+	&>.dropdown.icon {
+			background: url(/images/icons/subnav-arrow.png) center center no-repeat;
+			background-size: 50%;
+			border: none;
+			display: block;
+			height: 50px;
+			right: 0;
+			margin: -25px -5px 0 0;
+			opacity: 0.8;
+			padding: 0;
+			top: 50%;
+			width: 50px;
+			@include transition(all 0.2s cubic-bezier(0.37, 0.01, 0.43, 0.99));
+			
+			-webkit-backface-visibility: visible;
+			backface-visibility: visible;
+
+		&:before {
+			content: "";
+		}	
+	}
+	&.active>.dropdown.icon {
+		@include transform(rotateX(-180deg));
+	}
+	.message {
+		font-weight: $font-light;
+		padding: 0.5em;
+		@include layout-md {
+			padding: 0.5em 0.75em !important;
+		}
+	}
+	&.half {
+		min-width: 160px;
+		margin: 0 $space-unit $space-unit 0;
+	}
+}
+
+/* Error and Success messages */
+.error {
+	.message {
+		color: $text-error;
+		font-size: $font-small;
+	}
+	.ui-text {
+		background: $bg-error;
+	}
+}
+.success {
+	.message {
+		color: $text-success;
+		font-size: $font-small;
+	}
+}

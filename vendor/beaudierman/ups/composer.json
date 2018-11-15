@@ -1,0 +1,27 @@
+{
+    "name": "beaudierman/ups",
+    "description": "A simple tool to return UPS shipping rates.",
+    "keywords": [
+        "laravel",
+        "ups",
+        "shipping"
+    ],
+    "homepage": "https://github.com/beaudierman/ups",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Beau Dierman",
+            "email": "beaudierman@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "5.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Beaudierman\\Ups\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}

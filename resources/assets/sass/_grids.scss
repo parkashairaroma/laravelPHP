@@ -1,0 +1,598 @@
+/*
+==========================================================================================
+Air Aroma Grids/Tiles
+==========================================================================================
+*/
+
+/* Main grid styles */
+.grid {
+	
+	@include flexbox;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	
+	width: 100%;
+	
+	// Add bottom padding
+	&.grid-a {
+		padding-bottom: 5%;
+	}
+	// Add top padding
+	&.grid-b {
+		padding-top: 5%;
+	}
+	
+	// Large boxes: 2-per row above layout-sm
+	&.large {
+		.box {
+			@include layout-sm {
+				width: 50%;
+			}
+		}
+	}
+	
+	// Small boxes: 4-per row above layout-sm, else 2 per row
+	&.small {
+		.box {
+			width: 50%;
+			
+			@include layout-sm {
+				width: 25%;
+			}
+		}
+	}
+	
+	// Square tiles. Use in conjunction with .tile
+	&.square {
+		.box-cell {
+			display: block;
+		}
+		.box-cell::after {
+			content: "";
+			display: block;
+			padding-bottom: 100%;
+			height: 0;
+		}
+	}
+	
+	// More info tile
+	&.more {
+		.box-cell {
+			display: block;
+		}
+		.box-cell::after {
+			content: "";
+			display: block;
+			height: 0;
+			padding-bottom: 50%;
+			
+			@include layout-sm {
+				padding-bottom: 25%;
+			}
+		}
+	}
+	// Blog pagination tile
+	&.grid-pagination {
+		.box {
+			width: 50%;
+		}
+		.box-cell {
+			background-color: $block-sub;
+			display: block;
+		}
+		a.box-cell:hover {
+			background-color: $block-sub-hover;
+		}
+		.box-cell::after {
+			content: "";
+			display: block;
+			height: 0;
+			padding-bottom: 100%;
+			
+			@include layout-sm {
+				padding-bottom: 50%;
+			}
+		}
+	}
+	
+	// Thin gap between boxes
+	&.hairline {
+		margin: 0 -1px 0 0;
+		
+		.box {
+			padding: 1px 1px 0 0;
+		}
+	}
+	
+	// Divider between boxes
+	&.divider {
+		.box {
+			// Include top border by default. Switch off with .div-a
+			@include divider(1px 0 0 0);
+		}
+		&.blog {
+			@include layout-sm {
+				.box {
+					@include divider(0);
+				}
+			}
+		}
+		&.div-a {
+			padding-top: 0;
+
+			.box:first-child {
+				@include divider(0);
+			}
+			
+			@include layout-sm {
+				.box {
+					@include divider(1px 0 0 0);
+				}
+				.box:first-child,
+				.box:nth-child(2) {
+					@include divider(0);
+				}
+				
+			}
+		}
+		
+		@include layout-sm {
+			.box {
+				.box-cell,
+				.blog-content {
+					@include divider(0 1px 0 0);
+				}
+				.box-cell {
+					margin: 3em 0;
+				}
+				&:nth-child(even) {
+					.box-cell,
+					.blog-content {
+						@include divider(0);
+					}
+				}
+			}
+		}
+		.text-block {
+			min-height: 100px;
+		}
+	}
+	
+	// Large space between boxes
+	&.gutter {
+		.box {
+			margin-bottom: $space-unit;
+			&:nth-child(odd) {
+				@include layout-md {
+					padding-right: ($space-unit/2);
+				}
+			}
+			&:nth-child(even) {
+				@include layout-md {
+					padding-left:($space-unit/2);
+				}
+			}
+		}
+	}
+	
+	// Inner grids go inside text-blocks
+	&.inner {
+		.box {
+			@include flex(1);
+			
+			.box-cell {
+				padding: 0 ($space-unit*2);
+				h3 {
+					margin-bottom: 0;
+				}
+				p {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+	
+	// Nested grids go inside other grids
+	&.nested {
+		border: 1px solid #fff;
+		border-width: 1px 0 0 0;
+		
+		@include stretch;
+		@include layout-sm {
+			border-width: 0 0 0 1px;
+		}
+		
+		.box {
+			border-bottom: 1px solid #fff;
+			font-size: 0.85em;
+			width: 50%;
+			
+			&:nth-child(odd) {
+				border-right: 1px solid #fff;
+			}
+		}
+	}
+	
+	// Tech spec grids
+	&.tech {
+		.content-block &,
+		.hero-block & {
+			margin-left: auto;
+			margin-right: auto;
+			width: 90%;
+			
+			@include layout-xl {
+				width: 100%;
+			}
+		}
+		.content-block & {
+			.box-cell {
+				@include divider(1px 0 0 0);
+			}
+			
+			.box {
+				&:first-child {
+					.box-cell {
+						@include divider(0);
+					}
+				}
+				&:nth-child(2) {
+					.box-cell {
+						@include layout-sm {
+							@include divider(0);
+						}
+					}
+				}
+			}
+		}
+		.box {
+			&:nth-child(odd) {
+				.box-cell {
+					@include layout-sm {
+						margin: 0 $space-unit;
+					}
+					@include layout-md {
+						margin: 0 ($space-unit*2) 0 0;
+					}
+				}
+			}
+			&:nth-child(even) {
+				.box-cell {
+					@include layout-sm {
+						margin: 0 $space-unit;
+					}
+					@include layout-md {
+						margin: 0 0 0 ($space-unit*2);
+					}
+				}
+			}
+			.box-cell {
+				padding: 3.125% $space-unit 5% $space-unit;
+				width: 100%;
+				
+				@include layout-lg {
+					padding: 3.125% ($space-unit*2) 5% ($space-unit*2);
+				}
+			}
+		}
+		.box, h3 {
+			text-align: left;
+		}
+		
+		// Tech Spec Images
+		.techspec-image {
+			margin: 0 auto;
+			max-width: 320px;
+		}
+	}
+	
+	// User input grid (forms etc)
+	&.input-grid {
+		padding: 3.125% 0 5% 0;
+		
+		// Add divider
+		&.ig-a {
+			@include divider(0 0 1px 0);
+		}
+		
+		&.ig-b {
+			padding-bottom: 0;
+		}
+		
+		.content-block & {
+			margin-left: auto;
+			margin-right: auto;
+			width: 90%;
+			
+			@include layout-xl {
+				width: 100%;
+			}
+		}
+		
+		.payment-tab & {
+			padding-top: 0;
+		}
+		
+		.box {
+			&:nth-child(odd) {
+				.box-cell {
+					@include layout-sm {
+						margin: 0 $space-unit;
+					}
+					@include layout-md {
+						margin: 0 ($space-unit*2) 0 0;
+					}
+				}
+			}
+			&:nth-child(even) {
+				.box-cell {
+					@include layout-sm {
+						margin: 0 $space-unit;
+					}
+					@include layout-md {
+						margin: 0 0 0 ($space-unit*2);
+					}
+				}
+			}
+			.box-cell {
+				padding:0 $space-unit;
+				width: 100%;
+				
+				@include layout-lg {
+					padding: 0 ($space-unit*2);
+				}
+			}
+		}
+		.box, h3 {
+			text-align: left;
+		}
+		.form-group {
+			margin: 0.75em 0;
+		}
+		.form-action {
+			.option-list {
+				padding: $space-unit 0;
+			}
+		}
+	}
+	
+	// Blog post grid
+	&.blog {
+		padding-top: 5%;
+		.box {
+			.blog-cell {
+				@include flexbox;
+				-ms-flex-direction: column;
+				-webkit-flex-direction: column;
+				flex-direction: column;
+			}
+			.blog-content {
+				width: 100%;
+
+				@include flex(1 0 auto);
+			}	
+			.blog-image {
+				width: 100%;
+				&:hover {
+					opacity: 0.7;
+				}
+				
+				img {
+					padding-top: 10%;
+				}
+			}
+		}
+	}
+	
+	// Blog post header
+	&.post-header {
+		.box-cell {
+			background-color: $block-sub;
+			display: block;
+		}
+		.box-cell::after {
+			content: "";
+			display: block;
+			height: 0;
+			padding-bottom: 25%;
+			
+			@include layout-sm {
+				padding-bottom: 50%;
+			}
+		}
+		.tile-content {
+			width: 100%;
+			
+			@include flexbox;
+			-ms-flex-pack: center;
+			-ms-flex-align: center;
+			-ms-align-items: center;
+			-ms-justify-content: center;
+			-webkit-align-items: center;
+			-webkit-justify-content: center;
+			align-items: center;
+			justify-content: center;
+		}
+		.tile-label {
+			padding: 0 5%;
+		}
+		.tile-image {
+			@include flex(1 0 auto);
+			width: 100%;
+		}
+	}
+}
+
+/* Generic box and tile styles */
+.box {
+	text-align: center;
+	position: relative;
+	width: 100%;
+	@include flexbox;
+	
+	&.light {
+		.box-cell {
+			background-color: $block-sub;
+		}
+	}
+	&.dark {
+		.box-cell {
+			background-color: black;
+		}
+	}
+	&.dark,
+	&.dark a {
+		color: $text-light;
+	}
+}
+.box-cell {
+	position: relative;
+	width: 100%;
+	
+	.text-block {
+		@include layout-sm {
+			padding: 5% 10%;
+			width: 100%;
+		}
+		@include layout-lg {
+			padding: 5% 15%;
+		}
+	}
+	code {
+		font-size: 75%;
+	}
+}
+.blog-cell {
+	width: 100%;
+	
+	.text-block {
+		margin: 10% 0;
+		@include layout-sm {
+			padding: 0 10%;
+			width: 100%;
+		}
+		@include layout-lg {
+			padding: 0 15%;
+		}
+	}
+}
+.tile {
+	overflow: hidden;
+	@include stretch;	
+	@include flexbox;
+	-ms-flex-pack: center;
+	-ms-flex-direction: column;
+	-ms-align-items: center;
+	-ms-justify-content: center;
+	-webkit-flex-direction: column;
+	-webkit-align-items: center;
+	-webkit-justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
+	.tile-label {
+		&.client {
+			padding: 10% 5%;
+		}
+		&.cover {
+			z-index: 1;
+			
+			@include stretch;
+			@include flexbox;
+			-ms-flex-pack: center;
+			-ms-flex-align: center;
+			-ms-flex-direction: column;
+			-ms-align-items: center;
+			-ms-justify-content: center;
+			-webkit-flex-direction: column;
+			-webkit-align-items: center;
+			-webkit-justify-content: center;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			
+		}
+	}
+	
+	.tile-info {
+		padding: 5% 15%;
+		position: absolute;
+		z-index: 2;
+		width: 100%;
+	
+		h3 {
+			margin-bottom: 0;
+		}
+		p {
+			margin-top: 0;
+		}
+	}
+	
+	.tile-icon {
+		@include stretch;
+		@include flexbox;
+		-ms-flex-pack: center;
+		-ms-flex-align: center;
+		-ms-flex-direction: column;
+		-ms-justify-content: center;
+		-ms-align-items: center;
+		-webkit-flex-direction: column;
+		-webkit-justify-content: center;
+		-webkit-align-items: center;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+				
+		img {
+			max-width: 160px;
+			padding: 1em;
+			width: 66.67%;
+		}
+		p {
+			margin: 0;
+			max-width: 240px;
+			padding: 0 5%;
+		}
+	}
+	
+	.tile-overlay {
+		background: rgba(0, 0, 0, 0.7);
+		opacity: 0;
+		z-index: 2;
+		@include stretch;
+		@include transition(opacity 0.2s linear);
+		@include flexbox;
+		-ms-flex-pack: center;
+		-ms-flex-align: center;
+		-ms-align-items: center;
+		-ms-justify-content: center;
+		-webkit-align-items: center;
+		-webkit-justify-content: center;
+		align-items: center;
+		justify-content: center;
+		span {
+			color: $text-light;
+			display: block;
+			font-size: 1em;
+		}
+	}
+}
+
+
+
+/* Tile links */
+a.box-cell {
+	background: $block-sub;
+	text-decoration: none;
+	
+	&:hover {
+		background: $block-sub-hover;
+		color: inherit;
+		
+		.tile-overlay {
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,24 @@
+class_name: ApiTester
+env:
+    local:
+        modules:
+            enabled:
+                - REST:
+                    url: http://local.air-aroma.com/api
+                    depends: PhpBrowser
+                    part: Json
+
+    develop:
+        modules:
+            enabled:
+                - REST:
+                    url: http://airaroma_dev:airtest1234@develop.air-aroma.com/api
+                    depends: PhpBrowser
+                    part: Json
+    master:
+        modules:
+            enabled:
+                - REST:
+                    url: http://www.air-aroma.com/api
+                    depends: PhpBrowser
+                    part: Json

@@ -1,0 +1,232 @@
+/* Imports new font face - uses mitFontTrackingCode.js ('includes/footer.blade.php') */
+@font-face {
+    font-family: "HelveticaNeueETW01-45Lt";
+    src: url("/fonts/e0781a75-0ecb-464e-b6e9-85780ddc0921.eot?#iefix");
+    src: url("/fonts/e0781a75-0ecb-464e-b6e9-85780ddc0921.eot?#iefix") format("eot"), url("/fonts/b8765d4b-d9a3-48b9-ac65-560e7517cf0e.woff2") format("woff2"), url("/fonts/d7d2e6c6-fc3a-41a5-9b52-648e12e215b2.woff") format("woff"), url("/fonts/cb64744b-d0f7-4ef8-a790-b60d6e3e4f21.ttf") format("truetype"), url("/fonts/ccde919e-a712-41ef-b90f-9efc47661659.svg#ccde919e-a712-41ef-b90f-9efc47661659") format("svg");
+}
+
+.button-disabled {
+    background: #ccc;
+    cursor: default;
+}
+.button-disabled:hover {
+    background: #ccc;
+}
+select {
+	visibility: hidden;
+}
+
+.linked-facebook-message {
+    text-align: center; 
+    padding: 32px 20% 0 20%;
+}
+
+.voucher-apply-button {
+    position: relative;
+    padding-top: 15px;
+}
+.voucher-message {
+    position: absolute; 
+    right: 0; 
+    top: 25px;
+}
+.voucher-code .message {
+  color: #cc0000;
+}
+.voucher-field {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+.voucher-field .ui-button {
+	margin-left: 10px;
+	min-width: 0;
+	width: 120px;
+}
+.address-table {
+	width: 90%;
+	margin: 0 auto;
+}
+@media screen and (min-width: 1920px) {
+	.address-table {
+	  width: 100%;
+	}
+}
+.address-table th {
+	font-weight: normal;
+	text-align: left;
+}
+/* FIX04: Ovveride text alignment - header styles for 'cart' and 'summary' shoud be merged into a more generic style */
+.address-table .summary-header h3 {
+	text-align: left;
+}
+.shipping-address-book table {
+    width: 100%;
+    margin: 0 auto;
+}
+.shipping-address-book td, .shipping-address-book th
+{
+    padding: 20px 0 20px 10px;
+    text-align: left;
+}
+.billing-address-book table {
+    width: 100%;
+    margin: 0 auto;
+}
+.billing-address-book td, .billing-address-book th
+{
+    padding: 25px 0 25px 10px;
+    text-align: left;
+}
+@media screen and (min-width: 1440px) {
+	.shipping-address-book td, .shipping-address-book th,
+	.billing-address-book td, .billing-address-book th
+	{
+	    padding: 25px 0 25px 20px;
+	    text-align: left;
+	}
+}
+.shipping-note {
+	margin: 0 auto;
+	width: 90%;
+}
+.shipping-note p {
+	color: #cc0000;
+	font-size: 0.7778em;
+	text-align: center;
+}
+
+/* aroscent/aroslim/aromax middle image on page (used hero-block with this) */
+.page-block-black h2 {color: #000 !important; text-shadow: none; }
+.page-block-black p {text-align: left; text-shadow: none; color: #666 !important; }
+.page-block-white h2 {color: #fff !important; text-shadow: none; }
+.page-block-white p {text-align: left; text-shadow: none; color: rgba(255, 255, 255, 0.6) !important; }
+.page-block P {text-align: left; }
+
+/* removal of border from aroscent page */
+.remove-border {border: none !important; border-width: 0; }
+
+/* video-block spacing */
+.blog .video-block {margin-top: 5%; margin-bottom: 5%; }
+
+.blog .image-block {margin-top: 5%; margin-bottom: 5%; } 
+.post .text-block {padding-top: 2.5% !important; padding-bottom: 2.5% !important; margin-top: 0; margin-bottom: 0; } 
+.blog-footer {margin-top: 8%; }
+
+/* added classes for various product and hero divs */
+.aroscent-hero-background {background-image: url(../images/hero/hero-product-aroscent.jpg); background-position: center center; }
+.aroscent-product-background {border: none !important;background-image: url(../images/products/aroscent-flexible.jpg); background-position: center center; }
+.aroslim-hero-background {background-image: url(../images/hero/hero-product-aroslim.jpg); background-position: 24% center; }
+.aroslim-product-background {border: none !important;background-image: url(../images/products/aroslim-easytouch.jpg); background-position: 0 center; }
+.aromax-hero-background {background-image: url(../images/hero/hero-product-aromax.jpg); background-position: center center; }
+.aromax-product-background {border: none !important; background-image: url(../images/products/aromax-color.jpg); background-position: center center; }
+
+
+.services-hero-background {background-image: url(../images/hero/hero-services.jpg); background-position: center center; }
+.products-hero-background {background-image: url(../images/hero/hero-products-home.jpg); background-position: center center; }
+
+/* classes for blog posts created by new CMS (not part of Derek's original style.css) */
+.post {padding: 0; margin: 0; width: 100%; padding-top: 60px; position: relative; }
+.post .paragraph {width: 90%; margin: 0 auto; padding: 20px 0 20px 0; }
+.post p {padding: 0; margin: 0; }
+.post .text-block {padding: 2% 20px 2% 20px; }
+.post blockquote {padding: 8% 5%; text-align: center; background: #f2f2f2; width: 100%; }
+@media screen and (min-width: 768px) {
+    .post .paragraph {width: 70%; padding: 20px 0 20px 0; } 
+    .post blockquote {padding: 80px 15%; text-align: center; width: 100%; } 
+}
+
+/* /blog/{slug} tag list */
+.blog .tag-list a {text-decoration: none; }
+
+/* used to fix font size on quotes (/aropromo is one example) */
+blockquote header {font-size: 1.35em; }
+
+
+/* fixes the logo ratio found on various pages such as (/clients) */
+.tile .tile-icon img {max-width: 125px; padding: 0; width: 66.67%; }
+
+
+
+/* removed top duplicate grid border (example found on /about, 'We Are Green' .box) */
+body.blog .grid.divider .box {border-color: rgba(153, 153, 153, 0.3); border-style: solid; border-width: 0px 0 0 0; }
+
+
+/* Added additional feature icons, had to repoistion a few others */
+.feature-icon {background-size: 337px 337px; }
+.icon-lease {background-position: -281px 0px; }
+.icon-support {background-position: -281px -55px; }
+.icon-install {background-position: -281px -112px; }
+.icon-plug {background-position: -281px -159px; }
+.icon-spanner {background-position: -281px -225px; }
+
+/* Changes /contact form label tag cursor from pointer to arrow */
+label {cursor: default; }
+
+/* Adds tile hovering to industry logos (/scenting) */
+.scenting a.box-cell:hover {background: #ddd; color: inherit; }
+
+/* Removes hovering from client logos (/clients) */
+a.box-cell:hover {background: #f2f2f2; color: inherit; }
+
+/* changes list styling on the blog footer */
+.blog-footer ul {margin: 0; padding: 0; }
+.blog-footer li {list-style-type: none; margin: -2px 0 0 0; padding: 1px 0 1px 0; text-align: left; vertical-align: bottom }
+
+/* repositioning share button spans */
+.share-list .facebook span {height: 26px !important; } 
+.share-list .google span {height: 26px !important; } 
+.share-list .twitter span {height: 26px !important; } 
+.share-list .pinterest span {height: 26px !important; }
+
+/* /contact form success message */
+.success .voucher-message {color: #00cc00; font-size: 0.7778em; padding: 0 10px; }
+
+/* contact form errors alignment */
+.error .message { float: right; }
+
+/* site translating page */
+.translating {height: 100%; }
+.translating .title {background: url(/images/airaroma-logo.png) 50% 45% no-repeat; height: 400px; text-align: center; padding: 350px 0; font-size: 12px; color: #ccc; }
+
+
+.shipping-address-form h3, .billing-address-form h3 {
+	text-align: left;
+	padding-top: 30px;
+}
+.save-shipping-address, .save-billing-address, .cancel-billing-address, .cancel-shipping-address {
+    float: left;
+    margin-top:15px;
+}
+
+.save-shipping-address, .save-billing-address {
+    margin-right:40px;
+}
+
+.shipping-address input, .billing-address input {
+	border: 0;
+}
+.shipping-address-form, .billing-address-form, .newaddress-address-form,.shipping-address-book, .billing-address-book, .editaddress-address-form{
+	display: none;
+}
+
+.shipping-address-book, .billing-address-book {
+	display: none;
+	/* FIX05: Add bottom padding */
+	padding-bottom: 5%;
+}
+
+#shipping-address-fault.error .message {
+    float:left;
+}
+
+/* unsure */
+/*.error .ui.dropdown {background: #fcf2f2; }*/
+
+/* Development classes (do not change) */
+.developer-branch { z-index: 1000; height: 19px; width: 19px; position: fixed; top: 0; right: 0; } 
+.developer-branch span { line-height: 20px;  position: absolute; top: 0px; left: 4px;}
+.text {margin: 0 auto; } 
+.feature {background: #00ff00; } 
+.develop {background: #ff0000; }

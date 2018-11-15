@@ -1,0 +1,371 @@
+/*
+==========================================================================================
+Air Aroma Store Stylesheet
+==========================================================================================
+*/
+
+// Store modfications
+
+.grid.tech {
+	.product-info {
+		text-align: center;
+		padding: 5% 0;
+		.product-name {
+			text-align: center;
+			h3 {
+				margin-bottom: 0;
+				text-align: center;
+			}
+			p {
+				margin-top: 0;
+				text-align: center;
+			}
+		}
+		.product-desc {
+			text-align: left;
+			padding-top: 0;
+			padding-bottom: 0;
+		}
+	}
+}
+
+// Product filter dropdown
+.product-filter {
+	margin: 0 auto;
+	width: 240px;
+	text-align: center;
+	
+	@include layout-md {
+		font-size: 0.8889em;
+	}
+	@include layout-lg {
+		font-size: 0.8em;
+	}
+	@include layout-lg {
+		margin: -1.9em ($space-unit*4) 0 0;
+		position: absolute;
+		top: 50%;
+		right: 0;
+		z-index: 200;
+	}	
+}
+
+.product-cart {
+	.selection.ui.dropdown {
+		margin: ($space-unit*2) 0;
+		min-width: 180px;
+		width: 40%;
+	}
+	.ui-button {
+		display: block;
+		margin: 0 auto;
+		min-width: 180px;
+		width: 40%;
+	}
+}
+
+// Shopping Cart
+.shopping-cart {
+	font-size: 0.8889em;
+	margin: 0 auto;
+	width: 90%;
+	
+	@include divider(1px 0 0 0);
+	@include layout-md {
+		font-size: 1em;
+		@include divider(0);
+	}
+	@include layout-xl {
+		width: 100%;
+	}
+}
+.cart-summary {
+	border: none;
+	padding-top: 3.125%;
+	
+	.summary-header {
+		padding: 0 $space-unit;
+		@include layout-lg {
+			padding: 0 ($space-unit*2);
+
+		}
+	}
+	h3 {
+		text-align: left;
+	}
+}
+.cart-row {
+	padding: $space-unit 0;
+	position: relative;
+	width: 100%;
+	@include divider(0 0 1px 0);
+	@include layout-md {
+		padding: ($space-unit*2) 0;
+	}
+}
+.cart-item {
+	margin-right: 40px;
+	
+	@include flexbox;
+	-ms-flex-direction: row;
+	-ms-align-items: center;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-direction: row;
+	-webkit-align-items: center;
+	-webkit-flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+	a {
+		text-decoration: none;
+	}
+}
+.cart-header {
+	display: none;
+	@include layout-md {
+		display: block; 
+	}
+	.cart-item-image {
+		height: 0;
+	}
+}
+.cart-item-image {
+	height: 40px;
+	min-width: 40px;
+	width: 40px;
+	@include layout-md {
+		height: 80px;
+		width: 80px;
+	}
+	@include layout-lg {
+		height: 100px;
+		width: 100px;	
+	}
+	img {
+		@include divider(1px);
+	}
+}
+.cart-item-desc {
+	padding: 0 $space-unit;
+	@include layout-md {
+		padding: 0 ($space-unit*2);
+	}
+	@include flex(1 0 auto);
+}
+.cart-item-aux {
+	font-size: $font-small;
+	margin-top: ($space-unit/2);
+	@include flexbox;
+	-ms-flex-direction: row;
+	-ms-align-items: center;
+	-webkit-flex-direction: row;
+	-webkit-align-items: center;
+	flex-direction: row;
+	align-items: center;
+	@include flex(1 0 100%);
+	@include layout-md {
+		font-size: 1em;
+		margin-top: 0;
+		@include flex(0 0 auto);
+	}
+}
+.cart-item-qty {
+	width: 50px;
+	@include layout-md {
+		text-align: center;
+		width: 100px;
+	}
+	@include layout-lg {
+		width: 140px;
+	}
+	.ui-text {
+		text-align: center;
+		height: 30px;
+		padding: 0;
+		width: 40px;
+		@include layout-md {
+			height: 40px;
+			padding: 0 ($space-unit*2);
+			width: 60px;
+		}
+	}
+}
+.cart-item-price {
+	color: $text-note;
+	width: 90px;
+	@include layout-md {
+		color: $text-body;
+		padding: 0 ($space-unit*2);
+		width: 120px;
+	}
+	@include layout-lg {
+		width: 140px;
+	}
+}
+.cart-item-remove {
+	height: 40px;
+	margin-top: -20px;
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 40px;
+	
+	.btn-remove {
+		background: url(/images/icons/remove.png) 0 0 no-repeat;
+		background-size: 40px 40px;
+		display: block;
+		height: 40px;
+		width: 40px;
+	}
+}
+.cart-total {
+	padding: 1.5em 0;
+	.cart-item {
+		margin: 0;
+	}
+}
+.cart-sub-total {
+	display: block;
+	width: 100%;
+	
+	@include flexbox;
+	-ms-flex-direction: row;
+	-ms-align-items: center;
+	-webkit-flex-direction: row;
+	-webkit-align-items: center;
+	flex-direction: row;
+	align-items: center;
+	
+	.cart-total-label,
+	.cart-total-price {
+		display: block;
+		font-size: $font-small;
+		padding: 0 $space-unit;
+		@include layout-md {
+			padding: 0 ($space-unit*2);
+		}
+	}
+	.cart-total-label {
+		@include flex(1 0 auto);
+		@include layout-md {
+			text-align: right;
+		}
+	}
+	.cart-total-price {
+		width: 140px;
+		@include layout-md {
+			color: $text-body;
+			text-align: left;
+			width: 160px;
+		}
+		@include layout-lg {
+			width: 180px;
+		}
+	}
+	&.main-total {
+		.cart-total-label,
+		.cart-total-price {
+			font-size: 1em;
+			font-weight: $font-medium;
+			margin: 1em 0;
+		}	
+	}
+}
+
+/* Payment header */
+.payment-header {
+	margin: 0 auto;
+	padding: 3.125% 0 0 0;
+	text-align: left;
+	width: 90%;
+	
+	h3, li {
+		padding: 0 $space-unit;
+	}
+	@include layout-lg {
+		h3, li {
+			padding: 0 ($space-unit*2);
+		}
+	}
+	@include layout-xl {
+		width: 100%;
+	}
+	h3 {
+		text-align: left;
+	}
+	.form-group {
+		max-width: none;
+		margin-bottom: 0.5em;
+	}
+	.option-list {
+		margin: 0;
+		@include flexbox;
+		-ms-flex-wrap: wrap;
+		-webkit-flex-wrap: wrap;
+		flex-wrap: wrap;
+		width: 100%;
+		
+		li {
+			width: 100%;
+			
+			@include layout-md {
+				width: 50%;
+			}
+			
+			&:nth-child(even) {
+				@include layout-md {
+					padding-left: ($space-unit*2);
+				}
+				@include layout-lg {
+					padding-left: ($space-unit*4);
+				}
+			}
+			.ui-radio,
+			.ui-checkbox {
+				margin-right: ($space-unit*2);
+			}
+			label {
+				display: block;
+				.label-text {
+					display: inline-block;
+					margin: 0 ($space-unit*2) $space-unit 0;
+				}
+			}
+			
+			// Payment icons
+			.payment-icons {
+				display: inline-block;
+				margin: -0.18em 0 $space-unit 0;
+				vertical-align: top;
+				@include layout-lg {
+					margin-top: -0.12em;
+				}
+			}
+			.payment-icon {
+				background-image: url(/images/icons/payment/payment-icon-sprite.png);
+				background-size: 288px 128px;
+				display: inline-block;
+				margin: 0 2px;
+				overflow: hidden;
+				height: 32px;
+				width: 48px;
+				&.payment-icon-mastercard {
+					background-position: 0 0;
+				}
+				&.payment-icon-visa {
+					background-position: -48px 0;
+				}
+				&.payment-icon-amex {
+					background-position: -96px 0;
+				}
+				&.payment-icon-diners {
+					background-position: -144px 0;
+				}
+				&.payment-icon-paypal {
+					background-position: 0 -32px;
+					width: 72px;
+				}
+			}
+		}
+	}
+}

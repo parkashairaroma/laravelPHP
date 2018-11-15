@@ -1,0 +1,21 @@
+.inline-tools:hover {border-top: 1px #ff0000 dotted; border-bottom: 1px #ff0000 dotted; }
+.inline-tools:after {font-family: FontAwesome; content: '\f105'; position: absolute; font-size: 11px; top: 2px; left: -5px; color: #ff0000; }
+.inline-tools {font-style: normal; position: relative; display: inline-block; text-decoration: inherit; border-bottom: 1px transparent solid; border-top: 1px transparent solid; }
+
+.tile .tile-overlay {bottom: auto; }
+.admin-editor {min-width: 200px; max-width: 500px; width: auto; height: auto; position:absolute; padding:2px; top: 0; left: 0; z-index: 10000; background: #fff; -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75); -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75); box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75); font-size: 13px; }
+.admin-editor .buttons {font-size: 15px; }
+.admin-editor .buttons i {margin-left: 3px; }
+.admin-editor .token {padding: 3px; background: #f9f9f9; border-bottom: 1px #ddd solid; }
+.admin-editor .editor {padding: 10px 3px; white-space: pre-wrap }
+.admin-editor .original {margin-bottom: 5px; padding: 10px 3px; white-space: pre-wrap }
+.admin-editor .label { background: #f9f9f9; padding: 3px; font-weight: bold}
+
+[contenteditable="true"] { /*display: inline */ }
+.admin-actions i {color: #000; }
+.admin-actions {margin: 0; padding:0; text-transform: capitalize; position:absolute; top: 0; left: 0; padding: 10px; z-index: 100000; background: #f9f9f9; line-height: 20px; font-size: 15px; -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75); -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75); box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75); }
+.admin-actions a {cursor: pointer; text-decoration: none !important;}
+
+/* tooltip theme */
+.tooltip-theme {border-radius: 3px; background: #000; color: #fff; }
+.tooltip-theme .tooltipster-content {font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; padding: 8px 10px; } 

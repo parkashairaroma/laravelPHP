@@ -1,0 +1,1868 @@
+/*
+==========================================================================================
+Air Aroma Stylesheet
+==========================================================================================
+*/
+
+// Import CSS reset
+@import 'reset';
+
+/* --------------------------------------------- 
+Variables
+--------------------------------------------- */
+
+// Fonts
+$font-body: "Helvetica Neue", Arial, sans-serif; 	// Body text
+$font-code: "Courier New", Courier, monospace;		// Code/monospaced
+
+// Font sizing
+$font-small: 0.7778em;
+$font-legal: 0.8888em;
+
+// Font weights
+$font-thin: 300;
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 700;
+
+// Colors
+$text-body: #333; 									// Body text
+$text-sub: #505050; 								// Body text - secondary
+$text-note: #7a7a7a;								// Bddy text - note
+$text-nav: #000;									// Navigation
+$text-nav-hover: rgba(0, 0, 0, 0.45); 				// Navigation - hover
+$text-nav-active: rgba(0, 0, 0, 0.45);  			// Navigation - active
+$text-light: #fff;									// Light text
+$text-light-sec: rgba(255, 255, 255, 0.6);			// Light text - navigation/secondary
+$text-light-hover: rgba(255, 255, 255, 0.4);		// Light - hover
+$text-light-active: rgba(255, 255, 255, 0.4);		// Light - active
+$text-link: #09f;									// Links
+$block-sub: #f2f2f2;								// Content block - secondary
+$block-sub-hover: #ddd;								// Content block - hover
+$block-dropdown: rgba(248, 248, 248, 0.98);			// Content block - navigation
+$block-navigation: rgba(255, 255, 255, 0.98);		// Content block - navigation
+$block-active: rgba(0, 0, 0, 0.06);					// Content block - active
+$icon-main: #333;									// Icon
+$icon-light: #adadad;								// Icon - light grey
+$icon-green: #adadad;								// Icon - green
+
+// Spacing
+$space-unit: 10px;
+
+// Layout widths
+$width-sm: 640px;			// Mobile
+$width-md: 768px;			// Tablets and desktop
+$width-lg: 1440px;			// Desktop
+$width-xl: 1920px;			// Wide desktop
+
+/* --------------------------------------------- 
+Mixins
+--------------------------------------------- */
+// Resolution
+@mixin retina {
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min--moz-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 2/1),
+	only screen and (min-device-pixel-ratio: 2),
+	only screen and (min-resolution: 192dpi),
+	only screen and (min-resolution: 2dppx) {
+		@content;
+	}
+}
+// Layout
+@mixin layout-sm {
+	@media screen and (min-width: $width-sm) {
+		@content;
+	}
+}
+@mixin layout-md {
+	@media screen and (min-width: $width-md) {
+		@content;
+	}
+}
+@mixin layout-lg {
+	@media screen and (min-width: $width-lg) {
+		@content;
+	}
+}
+@mixin layout-xl {
+	@media screen and (min-width: $width-xl) {
+		@content;
+	}
+}
+// Stretch container
+@mixin stretch {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+// Dividers
+@mixin divider($width) {
+	border-color: rgba(153, 153, 153, 0.3);
+	border-style: solid;
+	border-width: $width;
+}
+// Clear floats, apply to element:after pseudoclass
+@mixin clearfix {
+    content: "";
+    display: table;
+    clear: both;
+}
+// Transitions
+@mixin transition($prop...) {
+	-ms-transition: $prop;
+	-moz-transition: $prop;
+	-webkit-transition: $prop;
+	transition: $prop;
+}
+// Transition Delays
+@mixin delay($prop...) {
+	-ms-transition-delay: $prop;
+	-moz-transition-delay: $prop;
+	-webkit-transition-delay: $prop;
+	transition-delay: $prop;
+}
+// Transforms
+@mixin transform($prop...) {
+	-ms-transform: $prop;
+	-moz-transform: $prop;
+	-webkit-transform: $prop;
+	transform: $prop;
+}
+
+// Flexbox
+@mixin flexbox() {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+@mixin flex($values) {
+	-webkit-box-flex: $values;
+	-moz-box-flex: $values;
+	-webkit-flex: $values;
+	-ms-flex: $values;
+	flex: $values;
+}
+
+/* --------------------------------------------- 
+Basic Typography
+--------------------------------------------- */
+body {
+	background: white;
+	font-size: 1em;							// 16px
+	line-height: 1.5;						// 24px
+	color: $text-body;
+    font-family: $font-body;
+    font-weight: $font-light;
+    
+    @include layout-md {
+	    font-size: 1.125em;					// 18px/27px
+	}
+	@include layout-lg {
+		font-size: 1.25em;					// 20px/30px
+	}
+}
+// Pre-formatted text
+code,
+pre {
+    font-family: $font-code;
+}
+code {
+	background: #f1f1f1;
+	border: 1px solid #e1e1e1;
+	border-radius: 4px;
+	color: #009966;
+	padding: 0.125em 0.5em;
+	margin: 0 0.2em;
+	white-space: nowrap;
+}
+small {
+	font-size: $font-small;
+}
+.file {
+	color: #009966;
+	font-style: italic;
+}
+// Text styles
+h1 {
+	font-size: 2.5em; 						// 35px, 45px, 50px
+	line-height: 1.2em;						// 42px, 54px, 60px
+	margin: 0.6em 0;						// 21px, 27px, 30px
+	font-weight: $font-thin;
+	text-align: center;
+}
+h2 {
+	font-size: 1.74em;						// 24px, 31px, 35px
+	line-height: 1.28em;					// 31px, 40px, 45px
+	margin: 1.28em 0;						// 31px, 40px, 45px
+	font-weight: $font-thin;
+	text-align: center;
+}
+h3 {
+	font-size: 1.35em;						// 19px, 24px, 27px
+	line-height: 1.3em;						// 25px, 31px, 35px
+	margin: 1.3em 0;						// 25px, 31px, 35px
+	font-weight: $font-thin;
+	text-align: center;
+}
+h4 {
+	font-size: 1em;
+	font-weight: $font-thin;
+}
+h4, p, ul, ol, figure {
+	margin: 1.5em 0;
+}
+strong {
+	font-weight: $font-bold;
+}
+em {
+	font-style: italic;
+}
+blockquote {
+	text-align: center;
+	margin: 3em 0;
+	
+	p {
+		font-size: 1.35em;
+	}
+	
+	footer {
+		margin: 1.5em 0;
+	}
+}
+
+// Text modifiers
+.pull {
+	@include layout-md {
+		margin-left: -10%;
+		margin-right: -10%;
+	}
+}
+.price {
+	color: #898989;
+}
+.note {
+	color: $text-note;
+}
+.center {
+	text-align: center;
+}
+// Lists
+ul li {
+	list-style: disc;
+	margin-left: 1.25em;
+}
+ul ul {
+	margin: 0 0 0 1em;
+}
+ul ul li {
+	list-style: circle;
+}
+ol li {
+	list-style: decimal;
+	margin-left: 1.5em;
+}
+.column-list {
+	
+	padding: 0 10%;
+	
+	@include flexbox;
+	-ms-flex-direction: row;
+	-ms-flex-wrap: wrap;
+	-ms-justify-content: flex-start;
+	-ms-align-items: stretch;
+	-webkit-flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	-webkit-justify-content: flex-start;
+	-webkit-align-items: stretch;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	
+	li {
+		list-style: none;
+		margin: 0 auto;
+		padding: 0 1em;
+
+		@include flex(1 0 50%);
+	}
+	
+}
+// Links
+a {
+	color: $text-body;
+	text-decoration: underline;
+	@include transition(color 0.2s linear, border-color 0.18s linear, background-color 0.18s linear);
+	
+	&:hover {
+		color: $text-link;
+	}
+}
+h3 a {
+	color: $text-body;
+	text-decoration: none;
+	
+	&:hover {
+		color: $text-link;
+		text-decoration: none;
+	}
+}
+
+/* --------------------------------------------- 
+Link styles
+--------------------------------------------- */
+// Apply UI Button to a, input or button elements
+.ui-button {
+	border: none;
+	border-radius: 4px;
+	background: black;
+	color: #fff;
+	display: inline-block;
+	font-size: 100%;
+	font-weight: $font-light;
+	line-height: 1.5;
+	min-width: 180px;
+	text-align: center;
+	text-decoration: none;
+	padding: $space-unit ($space-unit*4);
+	
+	&:hover {
+		background: $text-link;
+		color: #fff;
+	}
+	
+	// Outline button
+	&.ui-a {
+		background: none;
+		color: $text-body;
+		padding: ($space-unit - 2) ($space-unit*4);
+		@include divider(1px);
+		
+		&:hover {
+			border-color: $text-link;
+			color: $text-link;
+		}
+	}
+	
+	// Add extra margin
+	&.ui-b {
+		margin: 1.5em auto;
+	}
+	
+	// Previous/Next buttons
+	&.ui-prev {
+		float: left;
+	}
+	&.ui-next {
+		float: right;
+	}
+	
+	// Facebook sign in button
+	&.button-facebook {
+		background: #3b5998;
+		&:hover {
+			background: #293e6a;
+		}
+		white-space: nowrap;
+		small {
+			font-weight: $font-bold;
+		}
+	}
+}
+// Blog tag/search pagination
+.pagination {
+	.ui-button {
+		min-width: 120px;
+		padding-left: ($space-unit*2);
+		padding-right: ($space-unit*2);
+		@include layout-md {
+			min-width: 180px;
+		}
+	}
+}
+// Button icons
+.button-icon {
+	display: inline-block;
+	vertical-align: middle;
+	margin: -0.2em 0.5em 0 0;
+	height: 20px;
+	width: 20px;
+	
+	&.button-icon-facebook {
+		background: url(/images/icons/button-icon-facebook.png) no-repeat;
+		background-size: 100%;
+	}
+	&.button-icon-lock {
+		background: url(/images/icons/button-icon-lock.png) no-repeat;
+		background-size: 100%;
+	}
+}
+
+// DEPRECATED: Link button. Replace with UI button. To center buttons add class="center" to parent element
+.link-button {
+	margin: 3em auto;
+	border-radius: 4px;
+	display: inline-block;
+	padding: $space-unit ($space-unit*4);
+	text-decoration: none;
+	text-align: center;
+	
+	@include divider (1px);
+	&:hover {
+		border-color: $text-link;
+	}
+	// Align center
+	&.lb-a {
+		text-align: center;
+	}
+	
+	// Dark button
+	&.lb-b {
+		a {
+			background: black;
+			border: none;
+			color: white;
+			
+			&:hover {
+				background: $text-link;
+			}
+		}
+	}
+	&.lb-prev {
+		float: left;
+	}
+	&.lb-next {
+		float: right;
+	}
+}
+
+/* --------------------------------------------- 
+Images
+--------------------------------------------- */
+img {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+figure img {
+	margin: 0 auto;
+}
+
+/* --------------------------------------------- 
+Layout
+--------------------------------------------- */
+.container {
+	margin: 0 auto;
+	//overflow: hidden;
+	position: relative;
+	width: 100%;
+
+	@include layout-md {
+		max-width: 1024px;
+	}
+
+	@include layout-lg {
+		max-width: 1280px;
+	}
+	@include layout-xl {
+		max-width: 1440px;
+	}	
+}
+.container::after {
+	@include clearfix;
+}
+main {
+	display: block;
+	position: relative;
+}
+
+
+/* --------------------------------------------- 
+Content Blocks
+--------------------------------------------- */
+.content-block {
+	position: relative;
+}
+// Content A: add bottom border
+.content-block.cb-a {
+	@include divider(0 0 1px 0);
+}
+// Content B: light background color
+.content-block.cb-b {
+	background-color: $block-sub;
+}
+// Content C: dark background color
+.content-block.cb-c {
+	background-color: black;
+	color: $text-light;
+}
+.content-block.cb-network {
+	background-color: #d8d8d8;
+}
+
+// Video
+.video-block {
+	background-color: black;
+	position: relative;
+	padding-bottom: 56.25%; // 16:9 ratio
+	
+	iframe {
+		height: 100%;
+		width: 100%;
+		
+		@include stretch;
+		
+	}
+}
+
+/* --------------------------------------------- 
+Header
+--------------------------------------------- */
+header[role="banner"] {
+	background: white;
+	position: relative;
+	width: 100%;
+	z-index: 300;
+	@include divider(0 0 1px 0);
+}
+#logo {	
+	height: 50px;
+
+	@include layout-md {
+		height: 84px;
+	}
+	
+	h1 {
+		margin: 0 auto;
+		height: 100%;
+		width: 128px;
+		
+		@include layout-md {
+			width: 154px;
+		}
+		
+		a {
+			background: url(/images/airaroma-logo.png) no-repeat;
+			background-size: contain;
+			background-position: center center;
+			display: block;
+			height: 100%;
+			width: 100%;
+			
+			@include transition(all 0.2s linear);
+			@include retina {
+				background-image: url(/images/airaroma-logo2x.png);
+			}
+		}
+		a:hover {
+			opacity: 0.5;
+		}
+		span {
+			display: none;
+		}
+	}
+}
+
+/* --------------------------------------------- 
+Navigation
+--------------------------------------------- */
+
+// Main menu button
+#menu-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 50px;
+	width: 50px;
+	
+	@include layout-md {
+		display: none;
+	}
+	
+	#menu-button-icon {
+		cursor: pointer;
+		display: block;
+		position: absolute;
+		height: 49px;
+		width: 49px;
+		
+		.ml {
+			background: $icon-light;
+			display: block;
+			height: 2px;
+			left: 16px;
+			position: absolute;
+			width: 18px;
+			
+			@include transition(all 0.2s cubic-bezier(0.37, 0.01, 0.43, 0.99));
+		}
+		#ml-01 {
+			top: 18px;
+		}
+		#ml-02 {
+			top: 24px;
+		}
+		#ml-03 {
+			top: 30px;
+		}
+	}
+}
+
+#cart-button {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 50px;
+	width: 50px;
+	@include layout-md {
+		right: 30px;
+		height: 84px;
+		width: 60px;
+	}
+	a {
+		display: block;
+	}
+	.cart-icon {
+		background: url(/images/icons/shopping-cart-icon.png) 0 0 no-repeat;
+		background-size: 49px 98px;
+		display: block;
+		height: 49px;
+		margin: 0 auto;
+		overflow: hidden;
+		width: 49px;
+		
+		@include layout-md {
+			margin: 17px auto;
+		}
+	}
+	&.has-item {
+		.cart-icon {
+			background-position: 0 -49px;
+		}
+	}
+}
+
+// Dropdown navigation for mobile
+.nav-expanded, 
+.nav-expanded body {
+	overflow: hidden;
+	@include layout-md {
+		overflow: visible;
+		height: auto;
+		width: auto;
+		position: relative;
+	}
+}
+.nav-expanded body {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+}
+.nav-expanded #menu-button-icon {
+	#ml-01 {
+		@include transform(rotate(-135deg) translateY(-4.5px) translateX(-4px));
+	}
+	#ml-02 {
+		opacity: 0;	
+	}
+	#ml-03 {
+		@include transform(rotate(135deg) translateY(4.5px) translateX(-4px));
+	}
+}
+
+// Main menu and sub navigation
+.navigation {
+	width: 100%;
+}
+.nav-list {
+	margin: 0;
+	padding: 0;
+	
+	@include layout-md {
+		font-size: 0.8889em;
+		overflow: hidden;
+		position: relative;
+		bottom: auto;
+		top: auto;
+		padding: 0 ($space-unit*2);
+	}
+	@include layout-lg {
+		font-size: 0.8em;
+	}
+	
+	li {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		@include layout-md {
+			display: inline-block;
+			
+			&.store {
+				position: absolute;
+				right: ($space-unit*2);
+			}
+		}
+		a {
+			color: $text-nav;
+			display: block;
+			line-height: 30px;
+			padding: $space-unit ($space-unit*2);
+			text-decoration: none;
+			@include layout-md {
+				padding: ($space-unit*2);
+			}
+		}
+		a:hover {
+			color: $text-nav-hover;
+			
+			@include layout-md {
+				background: none;
+			}
+		}
+	}
+	li.active a {
+		color: $text-nav-active;
+	}
+}
+
+// Main menu
+#nav-primary {
+	background: $block-dropdown;
+	height: 100vh;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	visibility: hidden;
+	z-index: 200;
+	
+	@include transition(opacity 0.2s linear, visibility 0.2s linear);
+	
+	.nav-list {
+		width: 100%;
+		
+	}
+	@include layout-md {
+		background: none;
+		height: auto;
+		opacity: 1;
+		overflow: visible;
+		position: relative;
+		visibility: visible;
+		top: 0;
+		@include divider(0 0 1px 0);
+	}
+	
+	&.dropdown-visible {
+		opacity: 1;
+		padding-top: 51px;
+		visibility: visible;
+		overflow-y: scroll;
+		-ms-overflow-style: none;
+		-webkit-overflow-scrolling: touch;
+		overflow-scrolling: touch;
+		
+		@include layout-md {
+			overflow: hidden;
+			padding-top: 0;
+		}
+	}
+
+}
+// Sub navigation
+#nav-secondary {
+	position: absolute;
+	top: 0;
+	z-index: 100;
+	@include divider(0 0 1px 0);
+	
+	.nav-dropdown {
+		background: $block-dropdown;
+		@include layout-md {
+			background: $block-navigation;
+		}
+		li a {
+			padding-left: ($space-unit*5);
+		}
+	}
+	.nav-sub {
+		background: $block-dropdown;
+		opacity: 0;
+		padding: 0.5em 0;
+		position: absolute;
+		visibility: hidden;
+		width: 100%;
+		@include divider(1px 0 1px 0);
+		@include transition(opacity 0.2s linear, visibility 0.2s linear);
+		@include layout-md {
+			padding: 0;
+		}
+	}
+
+	// For sub-navigation that's not store navigation
+	&:not(.nav-store) {
+		
+		@include layout-md {
+			border: none;
+			.nav-dropdown {
+				display: none;
+			}
+			.nav-sub {
+				background: none;
+				
+				opacity: 1;
+				visibility: visible;
+				@include divider(0 0 1px 0);
+			}
+		}
+	}
+	
+	#dropdown-nav-button-icon {
+		background: url(/images/icons/subnav-arrow.png) center center no-repeat;
+		background-size: 50%; 
+		cursor: pointer;
+		position: absolute;
+		opacity: 0.8;
+		top: 0;
+		left: 0;
+		height: 50px;
+		width: 50px;
+		z-index: 100;
+		@include transition(all 0.2s cubic-bezier(0.37, 0.01, 0.43, 0.99));
+		@include layout-md {
+			margin: $space-unit ($space-unit*2);
+		}
+	}
+	
+	&.dropdown-visible {
+		.nav-sub {
+			opacity: 1;
+			visibility: visible;
+		}
+			#dropdown-nav-button-icon {
+			@include transform(rotateX(-180deg));
+		}
+	}
+	
+}
+// Store navigation
+.nav-store {
+	@include layout-md {
+		.nav-sub {
+			.nav-list {
+				max-width: 600px;
+				padding-top: 1em;
+				padding-bottom: 1em;
+				@include flexbox;
+				-ms-flex-direction: row;
+				-ms-flex-wrap: wrap;
+				-webkit-flex-direction: row;
+				-webkit-flex-wrap: wrap;
+				flex-direction: row;
+				flex-wrap:wrap;
+				
+				li {
+					max-width: 200px;
+					
+					width: 33.33%;
+					a {
+						padding: ($space-unit/2) ($space-unit*2);
+					}
+				}
+			}
+		}	
+	}
+} 
+// Dark navigation
+.dark #nav-secondary {
+	@include layout-md {
+		.nav-sub {
+			background: none;
+		}
+		.nav-list {
+			li {
+				a {
+					color: $text-light-sec;
+				}
+				a:hover {
+					color: $text-light-hover;
+				}
+			}
+			li.active {
+				a {
+					color: $text-light-active;
+				}
+			}
+		}
+	}
+}
+
+// Account navigation
+#nav-account {
+	background-color: #f6f6f6;
+	border-radius: 4px;
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	right: 0;
+	margin: -5px 5px 0 5px;
+	width: 280px;
+	@include transition(opacity 0.2s linear, visibility 0.2s linear);
+	@include divider(1px);
+	@include layout-md {
+		font-size: $font-small;
+		margin: -15px ($space-unit*4) 0 ($space-unit*4);
+	}
+	.caret {
+		background-image: url(/images/icons/account-nav-caret.png);
+		background-repeat: no-repeat;
+		background-size: 19px 10px;
+		height: 10px;
+		position: absolute;
+		right: 10px;
+		top: -10px;
+		width: 19px;
+	}
+	.nav-account-list {
+		margin: ($space-unit*3) 0;
+		padding: 0;
+		li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			a {
+				display: block;
+				padding: 0.5em ($space-unit*4);
+				text-decoration: none;
+				&:hover {
+					background-color: #ebebeb;
+				}
+			}
+		}
+	}
+	.ui-button {
+		display: block;
+		margin: $space-unit ($space-unit*4) ($space-unit*4) ($space-unit*4);
+		min-width: 0;
+		width: 200px;
+	}
+	&.dropdown-visible {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+
+/* --------------------------------------------- 
+Text Block
+--------------------------------------------- */
+.text-block {
+	margin: 0 auto;
+	max-width: 560px;
+	padding: 5% ($space-unit*2) 6.25% ($space-unit*2);
+	
+	@include layout-md {
+		max-width: 100%;
+		width: 62.5%;
+	}
+	@include layout-lg {
+		max-width: 940px;
+		width: auto;
+	}
+	// Text Block A: Center aligned paragraph text
+	&.tb-a {
+		text-align: center;
+	}
+	// Text Block B: Double vertical padding
+	&.tb-b {
+		padding: 10% ($space-unit*2) 12.5% ($space-unit*2);
+	}
+	// Text Block C: Remove bottom padding for flush images etc
+	&.tb-c {
+		padding-bottom: 0;
+	}
+	.sub-section {
+		margin: 0 auto 3em auto;
+		
+		@include layout-md {
+			max-width: 560px;
+			width: 80%;
+		}
+		
+	}
+}
+.text-block::after {
+	@include clearfix;
+}
+
+/* --------------------------------------------- 
+Hero Banners
+--------------------------------------------- */
+.hero-block {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: block;
+	position: relative;
+	text-decoration: none;
+			
+	// Hero A: add bottom border
+	&.hb-a {
+		@include divider(0 0 1px 0);
+	}
+	// Hero B: add light background
+	&.hb-b {
+		background-color: $block-sub;	
+	}
+	// Hero C: Reduce padding (for blog results)
+	&.hb-c {
+		.hero-content {
+			padding: 5% 0;
+		}
+	}
+
+	.hero-content {
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		//overflow: hidden;
+		position: relative;
+		text-align: center;
+		padding: 10% 0 20% 0;
+		//height: 420px;
+		width: 100%;
+		
+		@include layout-md {
+			padding: 5% 0 10% 0;
+		}
+		
+		.text-block {
+			padding: 5% ($space-unit*4);
+			width: auto;
+
+			@include layout-md {
+				max-width: 768px;
+			}
+		}
+	}
+	
+	&.large {
+		.hero-content {
+			padding-bottom: 70%;
+			
+			@include layout-md {
+				padding-bottom: 60%;
+			}
+			@include layout-lg {
+				padding-bottom: 50%;
+			}
+			@include layout-xl {
+				padding-bottom: 40%;
+			}
+		}
+	}
+	
+	&:hover {
+		color: inherit;
+	}
+
+}
+.dark .hero-block {
+	background-color: black;
+	color: $text-light;
+	text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+	
+	h3, p {
+		color: $text-light-sec;
+	}
+}
+.contact .hero-content {
+	padding-bottom: 0;
+}
+// If next to subnav add a little spacing
+// Hero banners
+.navigation + .hero-block .hero-content > .text-block {
+	margin-top: 50px;
+	
+	@include layout-md {
+		margin-top: 70px;
+	}
+}
+
+// General content
+.navigation + .container {
+	padding-top: 50px;
+	
+	@include layout-md {
+		padding-top: 70px;
+	}
+}
+
+/* Carousel */
+.carousel {
+	position: relative;
+	.slide {
+		position: relative;
+		.hero-content {
+			height: 420px;
+			@include layout-md {
+				height: 560px;
+			}
+			@include layout-lg {
+				height: 768px;
+			}
+		}
+	}
+
+	/* Carousel Controls */
+	.slick-dots {
+	    position: absolute;
+	    bottom: 40px;
+	    display: block;
+	    margin: 0;
+	    width: 100%;
+	    padding: 0;
+	    list-style: none;
+	    text-align: center;
+	    
+		li {
+			position: relative;
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			margin: 0 5px;
+			padding: 0;
+			cursor: pointer;
+			 
+			button {
+				background-color: #999;
+				border-radius: 10px;
+				font-size: 0;
+				line-height: 0;
+				display: block;
+				width: 9px;
+				height: 9px;
+				padding: 0;
+				cursor: pointer;
+				color: transparent;
+				border: 0;
+				outline: none;
+				opacity: 0.6;
+				border-radius: 10px;
+				
+				&::before {
+					
+					display: block;
+				    position: absolute;
+				    top: 0;
+				    left: 0;
+				    width: 20px;
+				    height: 20px;
+				    opacity: 0.5;
+				    background-color: white;
+				}
+				  
+				&:hover, &:focus {
+					outline: none;
+				}
+				&:hover::before, &:focus::before {
+					opacity: 1;
+				}
+			}
+			
+			&.slick-active button {
+				width: 11px;
+				height: 11px;
+				opacity: 0.88;
+			}
+		}
+	}
+	
+	/* Product Carousel Controls */
+	&.product-carousel {
+		.slick-dots {
+			bottom: -40px;
+		}
+	}
+}
+
+/* ---------------------------------------------
+Hero Banners
+--------------------------------------------- */
+@import 'hero';
+
+/* ---------------------------------------------
+Forms
+--------------------------------------------- */
+@import 'forms';
+
+
+
+/* ---------------------------------------------
+Grids/Tiles
+--------------------------------------------- */
+@import 'grids';
+
+/* ---------------------------------------------
+Store
+--------------------------------------------- */
+@import 'store';
+
+/* --------------------------------------------- 
+Tech Specs
+--------------------------------------------- */
+.spec-list {
+	h4 {
+		font-weight: $font-bold;
+		margin: 0;
+	}
+	ul {
+		margin-top: 0;
+	}
+}
+.swatches {
+
+	li {
+		list-style: none;
+		display: inline-block;
+		margin: 0;
+		padding: 0.5em 0.5em 0 0;
+		overflow: hidden;
+		
+		.swatch {
+			background-color: black;	
+			border-radius: 100%;
+			display: block;
+			margin: 0.5em auto;
+			height: 1.5em;
+			width: 1.5em;
+		}
+	}
+	
+	input[type="radio"] {
+		position: absolute;
+		left: -9999px;
+	}
+	input[type="radio"]:checked ~ label .swatch {
+		// selected style
+	}
+	.swatch-white .swatch {
+		background-color: white;
+		border: 1px solid #bbb;
+	}
+	.swatch-silver .swatch {
+		background-color: #ccc;
+	}
+	.swatch-black .swatch {
+		background-color: black;
+	}
+	.swatch-gold .swatch {
+		background-color: #dcbb6d;
+	}
+	.swatch-blue .swatch {
+		background-color: #183786;
+	}
+	.swatch-red .swatch {
+		background-color: #e01818;
+	}
+	.swatch-purple .swatch {
+		background-color: #572090;
+	}
+}
+
+.swatch-picker {
+	margin: 1.5em auto 3em auto;
+	font-size: 0.875em;
+	max-width: 480px;
+	
+	@include layout-md {
+		font-size: 1em;
+	}
+	li {
+		margin: ($space-unit) ($space-unit/2);
+		padding: 0;
+		text-align: center;
+		width: 28%;
+		
+		label {
+			border-radius: 4px;
+			
+			display: block;
+			margin: 0 auto;
+			padding: $space-unit;
+			
+			@include divider(1px);
+		}
+		
+		input[type="radio"]:checked ~ label {
+			background-color: $block-sub;
+		}
+	}
+}
+
+/* --------------------------------------------- 
+Images
+--------------------------------------------- */
+// Figure A: Double margin
+.fig-a {
+	margin: ($space-unit*4) 0;
+}
+// Figure B: Remove bottom margin (for flush images)
+.fig-b {
+	margin-bottom: 0;
+}
+/* ---------------------------------------------
+Icons
+--------------------------------------------- */
+.feature-icon {
+	background-color: #333333;
+	background-image: url(/images/icons/feature-icon-sprite.png);
+	background-repeat: no-repeat;
+	background-size: 280px 280px;
+	border-radius: 50%;
+	height: 56px;
+	margin: 1.5em auto;
+	overflow: hidden;
+	text-align: center;
+	width: 56px;
+	
+	@include transform(scale(0.75));
+	
+	@include layout-md {
+		@include transform(scale(1));
+	}
+	
+}
+// Import icons
+@import 'icons';
+
+/* --------------------------------------------- 
+Blog
+--------------------------------------------- */
+.post-result {
+	h3 {
+		margin-bottom: 0.65em;
+		text-align: left;
+	}
+	p {
+		margin-top: 0;
+	}
+	&:last-child {
+		@include divider(0);
+	}
+	.text-block {
+		padding-top: 2.5%;
+		padding-bottom: 2.5%;
+	}
+}
+.blog-footer {
+	h3, p {
+		text-align: left;
+		
+		a {
+			text-decoration: none;
+		}
+	}
+	.text-block {
+		padding-left: $space-unit;
+		padding-right: $space-unit;
+	}
+}
+
+/* --------------------------------------------- 
+Footer and Site Map
+--------------------------------------------- */
+ .flag-icon {
+	display: inline-block;
+	float: left;
+	margin: 0 $space-unit 0 0;
+	height: 16px;
+	width: 16px;
+	
+	@include layout-md {
+		margin: -0.4em ($space-unit*2) 0 0;
+		height: 32px;
+		width: 32px;
+	}
+	@include layout-lg {
+		margin-top: -0.3em;
+	}
+}
+.site-map {
+	padding: 0 0 6.25% 0;
+	
+	@include flexbox;
+	-ms-flex-direction: row;
+	-ms-flex-wrap: wrap;
+	-webkit-flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	flex-direction: row;
+	flex-wrap: wrap;
+	
+	.nav-group {
+		float: left;
+		width: 50%;
+	}
+	.nav-map {
+		margin: 0 0 1.8em 0;
+		
+		@include layout-md {
+			float: left;
+			padding: 0 ($space-unit*2);
+			width: 50%;
+		}
+		
+		li {
+			list-style: none;
+			line-height: 1.2em;
+			margin: 0;
+			padding: 0.3em ($space-unit*2);
+			
+			a {
+				color: $text-nav;
+				text-decoration: none;
+			}
+			a:hover {
+				color: $text-nav-hover;
+			}
+		}
+	}
+	
+	// Country List
+	&.country-list {
+		.nav-map {
+			margin: 0;
+			@include layout-md {
+				float: none;
+				padding: 0 ($space-unit*2);
+				width: auto;
+			}
+			@include layout-lg {
+				float: left;
+				width: 50%;
+			}
+			li {
+				margin: 0.5em 0;
+				@include layout-md {
+					margin: 1em 0;
+				}
+				@include layout-md {
+					margin: 1.5em 0;
+				}
+			}
+		}
+	}
+}
+.site-map::after {
+	@include clearfix;
+}
+footer[role="contentinfo"] {
+	font-size: $font-small;
+	
+	.site-map {
+		padding: ($space-unit*2) 0;
+		@include divider(1px 0 1px 0);
+		@include layout-lg {
+			padding: ($space-unit*4) 0;
+		}
+	}
+}
+
+#sub-footer {
+	padding: ($space-unit*2);
+	@include layout-md {
+		padding: ($space-unit*2) ($space-unit*4);
+	}
+
+	p {
+		margin-top: 0;
+	}
+}
+#sub-footer a {
+	color: $text-nav;
+	text-decoration: none;
+}
+#sub-footer a:hover {
+	color: $text-nav-hover;
+}
+#sub-footer p {
+	margin-bottom: $space-unit;
+	
+	@include layout-md {
+		display: inline-block;
+		margin: 0;
+	}
+}
+#sub-footer .locale {
+	display: inline-block;
+	margin: 0;
+	position: relative;
+	
+	@include layout-md {
+		float: right;
+		text-align: right;
+	}
+	
+	.flag-icon {
+		margin: 0 $space-unit 0 0;
+		@include layout-md {
+			float: right;
+			margin: -0.4em 0 0 $space-unit;
+			height: 32px;
+			width: 32px;
+		}
+		@include layout-lg {
+			margin-top: -0.2em;
+		}
+	}
+	
+}
+
+/* --------------------------------------------- 
+Legal
+--------------------------------------------- */
+.legal-address {
+	float: left;
+	margin-right: ($space-unit*8)
+}
+// Also use legal-block for country selector and site map
+.legal-block {
+	
+	padding: 5% ($space-unit*2) 6.25% ($space-unit*2);
+	
+	@include layout-md {
+		margin: 0 auto;
+		width: 85%;
+	}
+	
+	h1 {
+		margin-bottom: 1.2em;
+	}
+	h2 {
+		margin-bottom: 2.56em;	
+	}
+	h3 {
+		text-align: left;
+	}
+	h4 {
+		font-weight: $font-bold;
+		margin-bottom: 0;
+	}
+	h4, p, ul, ol {
+		font-size: $font-legal;
+	}
+	p {
+		margin-top: 0;
+	}
+	
+	.site-map {
+		margin: 0 (-$space-unit*2);
+		@include layout-md {
+			margin: 0 (-$space-unit*4);
+		}
+	}
+}
+
+/* ---------------------------------------------
+Diffusion Graph
+--------------------------------------------- */
+#diffusion-graph {
+	margin: 2em 0;
+	padding: ($space-unit*4) 0;
+	ul {
+		margin: 0;
+		padding: 0;
+		li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			
+		}
+		&.graph-legend {
+			margin: 0 auto 3em auto;
+			text-align: center;
+			font-size: $font-small;
+			@include layout-md {
+				font-size: 1em;
+			}
+			li {
+				border-radius: 2px;
+				display: inline-block;
+				margin: 0 ($space-unit*2);
+				padding: ($space-unit/2);
+				width: 30%;
+				@include divider(1px);
+				@include layout-md {
+					border-radius: 4px;
+				}
+				@include layout-lg {
+					width: 25%;	
+				}
+				&.legend-aa {
+					color: #3399cc;
+				}
+				&.legend-comp {
+					color: #993333;
+				}
+			}
+		}
+		&.x-axis {
+			bottom: -($space-unit*5);
+			font-size: $font-small;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+			li {
+				display: inline-block;
+				line-height: ($space-unit*5);
+				width: 17.5%;
+			}
+		}
+		&.y-axis {
+			font-size: $font-small;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			text-align: right;
+			top: -0.667em;
+			width: 10%;
+			li {
+				height: 25%;
+				padding-right: $space-unit;
+			}
+		}
+		
+	}
+	.chart {
+		position: relative;
+		padding-bottom: 43%;
+		width: 100%;
+	}
+	.plot {
+		left: 50%;
+		margin-left: -40%;
+		height: 100%;
+		position: absolute;
+		width: 80%;
+		@include divider(0 1px 1px 1px);
+		
+		.x-marker {
+			height: 100%;
+			position: absolute;
+			top: 0;
+			@include divider(0 1px 0 0);
+			width: 1px;
+			z-index: 1;
+		}
+		.x-marker-01 {
+			left: 25%;
+		}
+		.x-marker-02 {
+			left: 50%;
+		}
+		.x-marker-03 {
+			left: 75%;
+		}
+		.plot-line {
+			background-size: cover;
+			background-repeat: no-repeat;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 0;
+			@include transition(width 1.5s ease-in-out);
+		}
+		.plot-line-aa {
+			background-image: url(/images/graphs/diffusion-line-aa.png);
+			z-index: 10;
+		}
+		.plot-line-comp {
+			background-image: url(/images/graphs/diffusion-line-comp.png);
+			z-index: 9;
+		}
+	}
+}
+
+
+/* ---------------------------------------------
+Stress Graph
+--------------------------------------------- */
+#stress-graph {
+	margin: 2em 0;
+	padding: ($space-unit*4) 0;
+	ul {
+		margin: 0;
+		padding: 0;
+		li {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		&.graph-legend {
+			margin: 0 auto 3em auto;
+			text-align: center;
+			font-size: $font-small;
+			@include layout-md {
+				font-size: 1em;
+			}
+			li {
+				border-radius: 2px;
+				display: inline-block;
+				margin: 0 ($space-unit*2);
+				padding: ($space-unit/2) ($space-unit*2);
+				@include divider(1px);
+				@include layout-md {
+					border-radius: 4px;
+				}
+				&.legend-aa {
+					color: #3399cc;
+				}
+				&.legend-comp {
+					color: #993333;
+				}
+			}
+		}
+		&.x-axis {
+			bottom: -($space-unit*5);
+			font-size: $font-small;
+			left: 10%;
+			position: absolute;
+			text-align: center;
+			width: 80%;
+			li {
+				display: block;
+				float: left;
+				line-height: ($space-unit*5);
+				width: 12.5%;
+			}
+		}
+		&.y-axis {
+			font-size: $font-small;
+			height: 100%;
+			left: 0;
+			position: absolute;
+			text-align: right;
+			top: -0.667em;
+			width: 10%;
+			li {
+				height: 25%;
+				padding-right: $space-unit;
+			}
+		}
+		
+	}
+	.chart {
+		position: relative;
+		padding-bottom: 43%;
+		width: 100%;
+	}
+	.plot {
+		left: 50%;
+		margin-left: -40%;
+		height: 100%;
+		position: absolute;
+		width: 80%;
+		@include divider(1px 0 1px 1px);
+		
+		.y-marker {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			@include divider(0 0 1px 0);
+			height: 1px;
+			z-index: 1;
+		}
+		.y-marker-01 {
+			top: 25%;
+		}
+		.y-marker-02 {
+			top: 50%;
+		}
+		.y-marker-03 {
+			top: 75%;
+		}
+		.plot-bar {
+			background: black;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			margin-left: -4px;
+			height: 100%;
+			width: 6px;
+			transform: scaleY(0);
+			transform-origin: 0% 100%;
+			@include transition(all 1s ease-in-out);
+		}
+		.plot-bar-a {
+			background-color: #3399cc;
+			left: 6.25%;
+			&.grow {
+				@include transform(scaleY(0.26667));
+			}
+		}
+		.plot-bar-b {
+			background-color: #993333;
+			left: 18.75%;
+			@include delay(0.1s);
+			&.grow {
+				@include transform(scaleY(0.7222));
+			}
+		}
+		.plot-bar-c {
+			background-color: #0cb953;
+			left: 31.25%;
+			@include delay(0.2s);
+			&.grow {
+				@include transform(scaleY(0.29778));
+			}
+		}
+		.plot-bar-d {
+			background-color: #cce5d6;
+			left: 43.75%;
+			@include delay(0.3s);
+			&.grow {
+				@include transform(scaleY(0.36444));
+			}
+		}
+		.plot-bar-e {
+			background-color: #cce5d6;
+			left: 56.25%;
+			@include delay(0.4s);
+			&.grow {
+				@include transform(scaleY(0.51111));
+			}
+		}
+		.plot-bar-f {
+			background-color: #cce5d6;
+			left: 68.75%;
+			@include delay(0.5s);
+			&.grow {
+				@include transform(scaleY(0.67111));
+			}
+		}
+		.plot-bar-g {
+			background-color: #cce5d6;
+			left: 81.25%;
+			@include delay(0.6s);
+			&.grow {
+				@include transform(scaleY(0.78667));
+			}
+		}
+		.plot-bar-h {
+			background-color: #996699;
+			left: 93.75%;
+			@include delay(0.7s);
+			&.grow {
+				@include transform(scaleY(0.83555));
+			}
+		}
+	}
+}

@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Remove multiple slashes
+    RewriteCond %{THE_REQUEST} \ (.*)//+(.*)\  [NC]
+    RewriteRule .* %1/%2 [R=301,L]
+
+    # redirect index.php to 404 Not Found
+    RewriteCond %{THE_REQUEST} ^.*/index\.php 
+    RewriteRule ^(.*)index.php$  /404 [R=301,L]
+
+    #Handle pagination for urls
+    RewriteRule ^blog/page/([0-9]+)$ index.php?page=$1
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>

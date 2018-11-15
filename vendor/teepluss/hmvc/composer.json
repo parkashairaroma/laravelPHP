@@ -1,0 +1,30 @@
+{
+    "name": "teepluss/hmvc",
+    "description": "Laravel HMVC.",
+    "keywords": ["laravel", "hmvc"],
+    "homepage": "https://github.com/teepluss/laravel-hmvc",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Teepluss",
+            "email": "teepluss@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "guzzle/guzzle": "3.9.1"
+    },
+    "require-dev": {
+        "illuminate/support": "4.1.x"
+    },
+    "autoload": {
+        "classmap": [
+            "src/Exceptions.php"
+        ],
+        "psr-4": {
+            "Teepluss\\Hmvc\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
